@@ -6,7 +6,7 @@ class Pots:
     def __init__(self, state: str, rules: Dict[str, str]):
         self.state = state
         self.rules = rules
-        self.zero_offset = 0
+        self.zero_offset = 0 # at what index is pot 0
 
     def sum_of_pots_metric(self) -> int:
         pots_metric = 0
@@ -27,8 +27,7 @@ class Pots:
         new_state = list(padded_state)
         for i, char in enumerate(padded_state[2:-2], 2):
             rule_key = padded_state[i-2:i+3]
-            new_pot_state = self.rules[rule_key]
-            new_state[i] = self.rules[rule_key]
+            new_state[i] = self.rules[rule_key] # apply the rule at that position to get the new state
 
         new_state_str = ''.join(new_state)
         self.state = new_state_str
